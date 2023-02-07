@@ -1,58 +1,73 @@
-﻿using DevExpress.Mvvm;
-using DevExpress.Mvvm.DataAnnotations;
-using DevExpress.Mvvm.POCO;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using Testowe_Winforms_Devexpress.Contexts;
+﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Testowe_Winforms_Devexpress.Models;
 
 namespace Testowe_Winforms_Devexpress.ViewModels.Accounts
 {
-    [POCOViewModel]
-    public class AccountViewModel
+    public class AccountViewModel:INotifyPropertyChanged
     {
-        StorageDbContext _storageContext;
-        private AccountWrapper _account;
-        public AccountViewModel()
+        public Account item;
+        public AccountViewModel(Account account)
         {
+            item = account;
+        }
+        public string Login 
+        { 
+            get => item.Login; 
+            set 
+            {
+                item.Login = value;
+                OnPropertyChanged("Login"); 
+            } 
+        }
+        public string Password
+        {
+            get => item.Password; 
+            set {
+                item.Password = value;
+                OnPropertyChanged("Password"); 
+            }
+        }
 
-            _storageContext = new StorageDbContext();
+        public string Name
+        {
+            get => item.Name; 
+            set 
+            { 
+                item.Name = value; 
+                OnPropertyChanged("Name"); 
+            }
+        }
 
-            _storageContext.Accounts.Load();
+        public DateTime Created 
+        {
+            get => item.Created; 
+            set { 
+                item.Created = value;
+                OnPropertyChanged("Created");
+            } 
+        }
+        public DateTime LastUpdated 
+        {
+            get => item.LastUpdated;
+            set {
+                item.LastUpdated = value; 
+                OnPropertyChanged("LastUpdated"); }
+        }
+        public DateTime Logged 
+        { 
+            get => item.Logged;
+            set { item.Logged = value;
+                OnPropertyChanged("Logged");
+            } 
+        }
 
-        }
-        public IEnumerable<Account> GetAccounts()
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-            return _storageContext.Accounts.AsEnumerable();
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
-        public void Create()
-        {
-            _storageContext.Accounts.Add(_account.item);
-            _storageContext.SaveChanges();
-        }
-        public void Update()
-        {
-            var item = _storageContext.Accounts.FirstOrDefault(i => i.Login == _account.Login);
-            if (item == null)
-                throw new Exception("Account doesn't exist!");
-            _storageContext.Entry(item).State = EntityState.Modified;
-            _storageContext.SaveChanges();
-        }
-        public void Delete()
-        {
-            var item = _storageContext.Accounts.FirstOrDefault(i => i.Login == _account.Login);
-            if (item == null)
-                throw new Exception("Account doesn't exist!");
-            _storageContext.Accounts.Remove(item);
-            _storageContext.SaveChanges();
-        }
-        public virtual string Login { get; set; }
-        public virtual string Password { get; set; }
-        public virtual string Name { get; set; }
-        public virtual DateTime LastUpdated { get; set; }
-        public virtual DateTime Logged { get; set; }
-
     }
 }

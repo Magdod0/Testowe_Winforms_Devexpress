@@ -99,18 +99,18 @@
         public override void Down()
         {
             DropForeignKey("dbo.StorageDocs", "Product_ProductId", "dbo.Products");
-            DropForeignKey("dbo.StorageDocs", "StorageId", "dbo.Storages");
+            DropForeignKey("dbo.StorageDocs", "WarehouseId", "dbo.Storages");
             DropForeignKey("dbo.OrderProducts", "StorageDocId", "dbo.StorageDocs");
             DropForeignKey("dbo.OrderProducts", "ProductId", "dbo.Products");
-            DropForeignKey("dbo.Products", "StorageId", "dbo.Storages");
+            DropForeignKey("dbo.Products", "WarehouseId", "dbo.Storages");
             DropIndex("dbo.OrderProducts", new[] { "StorageDocId" });
             DropIndex("dbo.OrderProducts", new[] { "ProductId" });
             DropIndex("dbo.StorageDocs", new[] { "Product_ProductId" });
-            DropIndex("dbo.StorageDocs", new[] { "StorageId" });
+            DropIndex("dbo.StorageDocs", new[] { "WarehouseId" });
             DropIndex("dbo.StorageDocs", new[] { "Name" });
             DropIndex("dbo.Storages", new[] { "Name" });
             DropIndex("dbo.Products", new[] { "Name" });
-            DropIndex("dbo.Products", new[] { "StorageId" });
+            DropIndex("dbo.Products", new[] { "WarehouseId" });
             DropIndex("dbo.Clients", new[] { "Name" });
             DropIndex("dbo.Clients", new[] { "ContactName" });
             DropTable("dbo.OrderProducts");

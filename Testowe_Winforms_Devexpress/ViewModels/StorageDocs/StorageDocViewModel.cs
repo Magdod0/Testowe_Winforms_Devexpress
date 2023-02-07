@@ -1,52 +1,76 @@
-﻿using DevExpress.Mvvm;
-using DevExpress.Mvvm.DataAnnotations;
-using DevExpress.Mvvm.POCO;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using Testowe_Winforms_Devexpress.Contexts;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Testowe_Winforms_Devexpress.Models;
 
 namespace Testowe_Winforms_Devexpress.ViewModels.StorageDocs
 {
-    [POCOViewModel]
-    public class StorageDocViewModel
+    public class StorageDocViewModel : INotifyPropertyChanged
     {
-        StorageDbContext _storageContext;
-        private StorageDocWrapper _item;
-        public StorageDocViewModel()
+        private StorageDoc item;
+        public StorageDocViewModel(StorageDoc Storage)
+        {   
+            item = Storage;
+        }
+        public StorageDoc Item
         {
+            get => item;
+        }
+        public Warehouse Storage
+        {
+            get => item.Storage;
+            set
+            {
+                item.Storage= value;
+                OnPropertyChanged("Warehouse");
+            }
+        }
+        public int? StorageId
+        {
+            get => item.StorageId;
+            set
+            {
+                item.StorageId = value;
+                OnPropertyChanged("WarehouseId");
+            }
+        }
 
-            _storageContext = new StorageDbContext();
+        public string Name
+        {
+            get => item.Name;
+            set
+            {
+                item.Name = value;
+                OnPropertyChanged("Name");
+            }
+        }
 
-            _storageContext.StorageDocs.Load();
+        public ICollection<OrderProduct> OrderProducts
+        {
+            get => item.OrderProducts;
+            set
+            {
+                item.OrderProducts= value;
+                OnPropertyChanged("OrderProducts");
+            }
+        }
+        public DateTime CreatedDate
+        {
+            get => item.CreatedDate;
+            set
+            {
+                item.CreatedDate= value;
+                OnPropertyChanged("CreatedDate");
+            }
+        }
 
-        }
-        public IEnumerable<StorageDoc> GetStorageDocs()
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-            return _storageContext.StorageDocs.AsEnumerable();
-        }
-        public void Create()
-        {
-            _storageContext.StorageDocs.Add(_item.item);
-            _storageContext.SaveChanges();
-        }
-        public void Update()
-        {
-            var item = _storageContext.StorageDocs.FirstOrDefault(i => i.StorageDocId == _item.item.StorageDocId);
-            if (item == null)
-                throw new Exception("Account doesn't exist!");
-            _storageContext.Entry(item).State = EntityState.Modified;
-            _storageContext.SaveChanges();
-        }
-        public void Delete()
-        {
-            var item = _storageContext.StorageDocs.FirstOrDefault(i => i.StorageDocId == _item.item.StorageDocId);
-            if (item == null)
-                throw new Exception("Account doesn't exist!");
-            _storageContext.StorageDocs.Remove(item);
-            _storageContext.SaveChanges();
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
     }
+
 }

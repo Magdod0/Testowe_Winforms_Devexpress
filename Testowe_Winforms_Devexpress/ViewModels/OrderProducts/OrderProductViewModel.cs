@@ -1,52 +1,79 @@
-﻿using DevExpress.Mvvm;
-using DevExpress.Mvvm.DataAnnotations;
-using DevExpress.Mvvm.POCO;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using Testowe_Winforms_Devexpress.Contexts;
+﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Testowe_Winforms_Devexpress.Models;
 
 namespace Testowe_Winforms_Devexpress.ViewModels.OrderProducts
 {
-    [POCOViewModel]
-    public class OrderProductViewModel
+    public class OrderProductViewModel : INotifyPropertyChanged
     {
-        StorageDbContext _storageContext;
-        private OrderProductWrapper _item;
-        public OrderProductViewModel()
+        public OrderProduct item;
+        public OrderProductViewModel(OrderProduct OrderProduct)
         {
+            item = OrderProduct;
+        }
+        public Product Product
+        {
+            get => item.Product;
+            set
+            {
+                item.Product = value;
+                OnPropertyChanged("Product");
+            }
+        }
+        public Guid ProductId
+        {
+            get => item.ProductId;
+            set
+            {
+                item.ProductId = value;
+                OnPropertyChanged("ProductId");
+            }
+        }
 
-            _storageContext = new StorageDbContext();
+        public Guid StorageDocId
+        {
+            get => item.StorageDocId;
+            set
+            {
+                item.StorageDocId= value;
+                OnPropertyChanged("StorageDocId");
+            }
+        }
 
-            _storageContext.OrderProducts.Load();
+        public StorageDoc StorageDoc
+        {
+            get => item.StorageDoc;
+            set
+            {
+                item.StorageDoc= value;
+                OnPropertyChanged("StorageDoc");
+            }
+        }
+        public int Units
+        {
+            get => item.Units;
+            set
+            {
+                item.Units = value;
+                OnPropertyChanged("Units");
+            }
+        }
+        public DateTime OrderDate
+        {
+            get => item.OrderDate;
+            set
+            {
+                item.OrderDate= value;
+                OnPropertyChanged("OrderDate");
+            }
+        }
 
-        }
-        public IEnumerable<OrderProduct> GetOrderProducts()
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-            return _storageContext.OrderProducts.AsEnumerable();
-        }
-        public void Create()
-        {
-            _storageContext.OrderProducts.Add(_item.item);
-            _storageContext.SaveChanges();
-        }
-        public void Update()
-        {
-            var item = _storageContext.OrderProducts.FirstOrDefault(i => i.OrderProductId == _item.item.OrderProductId);
-            if (item == null)
-                throw new Exception("Account doesn't exist!");
-            _storageContext.Entry(item).State = EntityState.Modified;
-            _storageContext.SaveChanges();
-        }
-        public void Delete()
-        {
-            var item = _storageContext.OrderProducts.FirstOrDefault(i => i.OrderProductId == _item.item.OrderProductId);
-            if (item == null)
-                throw new Exception("Account doesn't exist!");
-            _storageContext.OrderProducts.Remove(item);
-            _storageContext.SaveChanges();
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
     }
 }

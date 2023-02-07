@@ -1,52 +1,107 @@
-﻿using DevExpress.Mvvm;
-using DevExpress.Mvvm.DataAnnotations;
-using DevExpress.Mvvm.POCO;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using Testowe_Winforms_Devexpress.Contexts;
+﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Testowe_Winforms_Devexpress.Models;
 
 namespace Testowe_Winforms_Devexpress.ViewModels.Products
 {
-    [POCOViewModel]
-    public class ProductViewModel
+    public class ProductViewModel : INotifyPropertyChanged
     {
-        StorageDbContext _storageContext;
-        private ProductWrapper _item;
-        public ProductViewModel()
+        public Product item;
+        public ProductViewModel(Product Product)
         {
+            item = Product;
+        }
+        public int SupplierId
+        {
+            get => item.SupplierId;
+            set
+            {
+                item.SupplierId= value;
+                OnPropertyChanged("SupplierId");
+            }
+        }
+        public int? StorageId
+        {
+            get => item.StorageId;
+            set
+            {
+                item.StorageId= value;
+                OnPropertyChanged("WarehouseId");
+            }
+        }
+        public Warehouse Storage
+        {
+            get => item.Storage;
+            set
+            {
+                item.Storage= value;
+                OnPropertyChanged("Warehouse");
+            }
+        }
 
-            _storageContext = new StorageDbContext();
+        public string Name
+        {
+            get => item.Name;
+            set
+            {
+                item.Name= value;
+                OnPropertyChanged("Name");
+            }
+        }
 
-            _storageContext.Products.Load();
+        public decimal Netto
+        {
+            get => item.Netto;
+            set
+            {
+                item.Netto= value;
+                OnPropertyChanged("Netto");
+            }
+        }  
+        public decimal Brutto
+        { 
+            get => item.Brutto;
+            set
+            {
+                item.Brutto= value;
+                OnPropertyChanged("Brutto");
+            }
+        }
+        public int UnitsAtBeginning
+        {
+            get => item.UnitsAtBeginning;
+            set
+            {
+                item.UnitsAtBeginning= value;
+                OnPropertyChanged("UnitsAtBeginning");
+            }
+        } 
+        public int UnitsLeft
+        {
+            get => item.UnitsLeft;
+            set
+            {
+                item.UnitsLeft= value;
+                OnPropertyChanged("UnitsLeft");
+            }
+        }
+        public DateTime ArrivalDate
+        {
+            get => item.ArrivalDate;
+            set
+            {
+                item.ArrivalDate= value;
+                OnPropertyChanged("ArrivalDate");
+            }
+        }
 
-        }
-        public IEnumerable<Product> GetProducts()
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-            return _storageContext.Products.AsEnumerable();
-        }
-        public void Create()
-        {
-            _storageContext.Products.Add(_item.item);
-            _storageContext.SaveChanges();
-        }
-        public void Update()
-        {
-            var item = _storageContext.Products.FirstOrDefault(i => i.ProductId == _item.item.ProductId);
-            if (item == null)
-                throw new Exception("Account doesn't exist!");
-            _storageContext.Entry(item).State = EntityState.Modified;
-            _storageContext.SaveChanges();
-        }
-        public void Delete()
-        {
-            var item = _storageContext.Products.FirstOrDefault(i => i.ProductId == _item.item.ProductId);
-            if (item == null)
-                throw new Exception("Account doesn't exist!");
-            _storageContext.Products.Remove(item);
-            _storageContext.SaveChanges();
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
     }
+
 }

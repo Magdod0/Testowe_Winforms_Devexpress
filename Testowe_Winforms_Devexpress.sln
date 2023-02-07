@@ -5,8 +5,6 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testowe_Winforms_Devexpress", "Testowe_Winforms_Devexpress\Testowe_Winforms_Devexpress.csproj", "{DC90FC19-0BB6-464A-800E-95B2CAEF038D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DXApplication6", "DXApplication6\DXApplication6.csproj", "{2599EBBF-D41C-4FF5-976C-03CC7B56CE26}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{DC90FC19-0BB6-464A-800E-95B2CAEF038D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC90FC19-0BB6-464A-800E-95B2CAEF038D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC90FC19-0BB6-464A-800E-95B2CAEF038D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2599EBBF-D41C-4FF5-976C-03CC7B56CE26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2599EBBF-D41C-4FF5-976C-03CC7B56CE26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2599EBBF-D41C-4FF5-976C-03CC7B56CE26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2599EBBF-D41C-4FF5-976C-03CC7B56CE26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

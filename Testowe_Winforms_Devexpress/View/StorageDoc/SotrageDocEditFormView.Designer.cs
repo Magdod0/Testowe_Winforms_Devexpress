@@ -35,7 +35,7 @@
             // mvvmContext1
             // 
             this.mvvmContext1.ContainerControl = this;
-            this.mvvmContext1.ViewModelType = typeof(Testowe_Winforms_Devexpress.ViewModels.StorageDocs.StorageDocViewModel);
+            this.mvvmContext1.ViewModelType = typeof(Testowe_Winforms_Devexpress.ViewModels.StorageDocs.StorageDocListViewModel);
             // 
             // SotrageDocEditFormView
             // 

@@ -39,8 +39,8 @@
             this.okButton = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.credentialUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mvvmContext1 = new DevExpress.Utils.MVVM.MVVMContext(this.components);
+            this.credentialUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.credentialsViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.textPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).BeginInit();
@@ -52,8 +52,8 @@
             this.tablePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.credentialUserBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.credentialUserBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.credentialsViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,16 +171,16 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // credentialUserBindingSource
-            // 
-            this.credentialUserBindingSource.DataSource = typeof(Testowe_Winforms_Devexpress.Models.CredentialUser);
-            // 
             // mvvmContext1
             // 
             this.mvvmContext1.BindingExpressions.AddRange(new DevExpress.Utils.MVVM.BindingExpression[] {
             DevExpress.Utils.MVVM.BindingExpression.CreatePropertyBinding(typeof(Testowe_Winforms_Devexpress.ViewModels.Authorization.CredentialsViewModel), "CurrentUser", this.textPassword, null)});
             this.mvvmContext1.ContainerControl = this;
             this.mvvmContext1.ViewModelType = typeof(Testowe_Winforms_Devexpress.ViewModels.Authorization.CredentialsViewModel);
+            // 
+            // credentialUserBindingSource
+            // 
+            this.credentialUserBindingSource.DataSource = typeof(Testowe_Winforms_Devexpress.Models.CredentialUser);
             // 
             // credentialsViewModelBindingSource
             // 
@@ -205,8 +205,8 @@
             this.tablePanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.credentialUserBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.credentialUserBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.credentialsViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 

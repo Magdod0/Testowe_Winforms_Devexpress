@@ -88,19 +88,19 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Accounts\Account.cs" />
-    <Compile Include="Models\Accounts\AccountWrapper.cs" />
+    <Compile Include="ViewModels\Accounts\AccountViewModel.cs" />
     <Compile Include="Models\Clients\Client.cs" />
-    <Compile Include="Models\Clients\ClientWrapper.cs" />
+    <Compile Include="ViewModels\Clients\ClientViewModel.cs" />
     <Compile Include="Models\Credentials\CredentialSource.cs" />
     <Compile Include="Models\Credentials\CredentialUser.cs" />
     <Compile Include="Models\OrderProducts\OrderProduct.cs" />
-    <Compile Include="Models\OrderProducts\OrderProductWrapper.cs" />
+    <Compile Include="ViewModels\OrderProducts\OrderProductViewModel.cs" />
     <Compile Include="Models\Product\Product.cs" />
-    <Compile Include="Models\Product\ProductWrapper.cs" />
-    <Compile Include="Models\StorageDoc\StorageDocWrapper.cs" />
-    <Compile Include="Models\Storage\Storage.cs" />
+    <Compile Include="ViewModels\Products\ProductViewModel.cs" />
+    <Compile Include="ViewModels\StorageDocs\StorageDocViewModel.cs" />
+    <Compile Include="Models\Storage\Warehouse.cs" />
     <Compile Include="Models\StorageDoc\StorageDoc.cs" />
-    <Compile Include="Models\Storage\StorageWrapper.cs" />
+    <Compile Include="ViewModels\Storages\StorageViewModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Authorization\CredentialsViewModel.cs" />
@@ -117,7 +117,7 @@
     <Compile Include="View\Accounts\AccountView.Designer.cs">
       <DependentUpon>AccountView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\Accounts\AccountViewModel.cs" />
+    <Compile Include="ViewModels\Accounts\AccountListViewModel.cs" />
     <Compile Include="View\Authorization\Authorization.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -137,7 +137,7 @@
     <Compile Include="View\Clients\ClientView.Designer.cs">
       <DependentUpon>ClientView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\Clients\ClientViewModel.cs" />
+    <Compile Include="ViewModels\Clients\ClientListViewModel.cs" />
     <Compile Include="View\OrderProducts\OrderProductEditFormView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -150,7 +150,7 @@
     <Compile Include="View\OrderProducts\OrderProductView.Designer.cs">
       <DependentUpon>OrderProductView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\OrderProducts\OrderProductViewModel.cs" />
+    <Compile Include="ViewModels\OrderProducts\OrderProductListViewModel.cs" />
     <Compile Include="View\Products\Product.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -163,7 +163,7 @@
     <Compile Include="View\Products\ProductEditFormView.Designer.cs">
       <DependentUpon>ProductEditFormView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\Products\ProductViewModel.cs" />
+    <Compile Include="ViewModels\Products\ProductListViewModel.cs" />
     <Compile Include="View\StorageDoc\SotrageDocEditFormView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -176,7 +176,7 @@
     <Compile Include="View\StorageDoc\StorageDocView.Designer.cs">
       <DependentUpon>StorageDocView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\StorageDocs\StorageDocViewModel.cs" />
+    <Compile Include="ViewModels\StorageDocs\StorageDocListViewModel.cs" />
     <Compile Include="View\Storages\StorageEditFormView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -189,7 +189,7 @@
     <Compile Include="View\Storages\StorageView.Designer.cs">
       <DependentUpon>StorageView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\Storages\StorageViewModel.cs" />
+    <Compile Include="ViewModels\Storages\StorageListViewModel.cs" />
     <Compile Include="View\View1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -218,11 +218,15 @@
     <EmbeddedResource Include="View\Authorization\Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Storages\StorageView.resx">
+      <DependentUpon>StorageView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Testowe_Winforms_Devexpress.Models.Account.datasource" />
     <None Include="Properties\DataSources\Testowe_Winforms_Devexpress.Models.CredentialUser.datasource" />
     <None Include="Properties\DataSources\Testowe_Winforms_Devexpress.ViewModels.Authorization.CredentialsViewModel.datasource" />
+    <None Include="Properties\DataSources\Testowe_Winforms_Devexpress.ViewModels.Storages.StorageViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -15,7 +15,7 @@ namespace Testowe_Winforms_Devexpress.Models
         public string Name { get; set; }
         public DateTime CreatedDate { get; set; }
         public int? StorageId { get; set; }
-        public Storage Storage { get; set; }
+        public Warehouse Storage { get; set; }
         public virtual ICollection<OrderProduct> OrderProducts { get; set; }
 
 

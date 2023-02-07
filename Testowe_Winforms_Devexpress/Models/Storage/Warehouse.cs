@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Testowe_Winforms_Devexpress.Models
 {
-    public class Storage
+    public class Warehouse
     {
-        public Storage()
+        public Warehouse()
         {
             Products = new List<Product>();
         }
-        public int StorageId { get; set; }
+        public int WarehouseId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public virtual ICollection<Product> Products { get; set; }

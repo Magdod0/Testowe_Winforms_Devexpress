@@ -17,5 +17,15 @@ namespace Testowe_Winforms_Devexpress.View.Storages
         {
             InitializeComponent();
         }
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

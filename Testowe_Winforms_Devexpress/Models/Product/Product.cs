@@ -10,7 +10,7 @@ namespace Testowe_Winforms_Devexpress.Models
         public Guid ProductId { get; set; }
         public int SupplierId { get; set; }
         public int? StorageId { get; set; }
-        public virtual Storage Storage { get; set; }
+        public virtual Warehouse Storage { get; set; }
 
         public string Name { get; set; }
         [Range(0, int.MaxValue - 1, ErrorMessage = "Can't be less than 0!")]

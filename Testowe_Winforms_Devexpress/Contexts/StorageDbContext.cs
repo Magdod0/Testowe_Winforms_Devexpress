@@ -20,7 +20,7 @@ namespace Testowe_Winforms_Devexpress.Contexts
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Storage> Storages { get; set; }
+        public DbSet<Warehouse> Storages { get; set; }
         public DbSet<StorageDoc> StorageDocs { get; set; }
         public DbSet<OrderProduct> OrderProducts { get; set; }
 
@@ -87,10 +87,10 @@ namespace Testowe_Winforms_Devexpress.Contexts
             OrderProductEntity.Property(e => e.OrderDate)
                 .HasColumnType("datetime2");
 
-            var StorageEntity = modelBuilder.Entity<Storage>();
+            var StorageEntity = modelBuilder.Entity<Warehouse>();
             StorageEntity.HasIndex(e => e.Name);
-            StorageEntity.HasKey(e => e.StorageId)
-                .Property(e => e.StorageId)
+            StorageEntity.HasKey(e => e.WarehouseId)
+                .Property(e => e.WarehouseId)
                 .HasColumnName("StorageID")
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             StorageEntity.Property(e => e.Name)
@@ -98,6 +98,7 @@ namespace Testowe_Winforms_Devexpress.Contexts
                 .IsRequired();
             StorageEntity.Property(e => e.Address)
                 .HasMaxLength(120);
+            StorageEntity.ToTable("Storage");
 
             var StorageDocEntity = modelBuilder.Entity<StorageDoc>();
             StorageDocEntity.HasIndex(e => e.Name);

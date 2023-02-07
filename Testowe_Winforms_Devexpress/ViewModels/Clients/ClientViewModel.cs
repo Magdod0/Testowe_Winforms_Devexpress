@@ -1,52 +1,60 @@
-﻿using DevExpress.Mvvm;
-using DevExpress.Mvvm.DataAnnotations;
-using DevExpress.Mvvm.POCO;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using Testowe_Winforms_Devexpress.Contexts;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Testowe_Winforms_Devexpress.Models;
 
 namespace Testowe_Winforms_Devexpress.ViewModels.Clients
 {
-    [POCOViewModel]
-    public class ClientViewModel
+    public class ClientViewModel : INotifyPropertyChanged
     {
-        StorageDbContext _storageContext;
-        private ClientWrapper _item;
-        public ClientViewModel()
+        public Client item;
+        public ClientViewModel(Client Client)
         {
+            item = Client;
+        }
+        public string ContactName
+        {
+            get => item.ContactName;
+            set
+            {
+                item.ContactName= value; 
+                OnPropertyChanged("ContactName");
+            }
+        }
+        public string Name
+        {
+            get => item.Name;
+            set
+            {
+                item.Name= value;
+                OnPropertyChanged("Name");
+            }
+        }
 
-            _storageContext = new StorageDbContext();
+        public string Address
+        {
+            get => item.Address;
+            set
+            {
+                item.Address= value;
+                OnPropertyChanged("Address");
+            }
+        }
 
-            _storageContext.Clients.Load();
+        public string Phone
+        {
+            get => item.Phone;
+            set
+            {
+                item.Phone= value;
+                OnPropertyChanged("Phone");
+            }
+        }
 
-        }
-        public IEnumerable<Client> GetClients()
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-            return _storageContext.Clients.AsEnumerable();
-        }
-        public void Create()
-        {
-            _storageContext.Clients.Add(_item.item);
-            _storageContext.SaveChanges();
-        }
-        public void Update()
-        {
-            var item = _storageContext.Clients.FirstOrDefault(i => i.ClientId == _item.item.ClientId);
-            if (item == null)
-                throw new Exception("Account doesn't exist!");
-            _storageContext.Entry(item).State = EntityState.Modified;
-            _storageContext.SaveChanges();
-        }
-        public void Delete()
-        {
-            var item = _storageContext.Clients.FirstOrDefault(i => i.ClientId == _item.item.ClientId);
-            if (item == null)
-                throw new Exception("Account doesn't exist!");
-            _storageContext.Clients.Remove(item);
-            _storageContext.SaveChanges();
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
     }
 }
