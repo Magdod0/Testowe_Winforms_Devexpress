@@ -1,0 +1,245 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3BFC47F1-D5A0-4C5C-A735-D6BE45B57712}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Testowe_WinF_Dev</RootNamespace>
+    <AssemblyName>Testowe_WinF_Dev</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v22.2" />
+    <Reference Include="DevExpress.Data.Desktop.v22.2" />
+    <Reference Include="DevExpress.Data.v22.2" />
+    <Reference Include="DevExpress.Mvvm.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v22.2.Core" />
+    <Reference Include="DevExpress.Utils.v22.2" />
+    <Reference Include="DevExpress.XtraBars.v22.2" />
+    <Reference Include="DevExpress.Sparkline.v22.2.Core" />
+    <Reference Include="DevExpress.XtraEditors.v22.2" />
+    <Reference Include="DevExpress.Drawing.v22.2" />
+    <Reference Include="DevExpress.XtraGrid.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v22.2, Version=22.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataModels\Context\MyDbContext.cs" />
+    <Compile Include="DataModels\Repositories\IRepository.cs" />
+    <Compile Include="DataModels\Repositories\WarehouseRepository.cs" />
+    <Compile Include="DataModels\UnitOfWorks\IUnitOfWork.cs" />
+    <Compile Include="DataModels\UnitOfWorks\UnitOfWork.cs" />
+    <Compile Include="DataModels\UnitOfWorks\WarehouseDocumentUnitOfWork.cs" />
+    <Compile Include="DataModels\UnitOfWorks\WarehouseUnitOfWork.cs" />
+    <Compile Include="Migrations\202302120558099_Added_more_fields.cs" />
+    <Compile Include="Migrations\202302120558099_Added_more_fields.designer.cs">
+      <DependentUpon>202302120558099_Added_more_fields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202302121645061_Renove_unneeded.cs" />
+    <Compile Include="Migrations\202302121645061_Renove_unneeded.designer.cs">
+      <DependentUpon>202302121645061_Renove_unneeded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\DocumentManagerViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\Credentials\CredentialsViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BaseEditionViewModel.cs" />
+    <Compile Include="Views\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202302090902378_Initial.cs" />
+    <Compile Include="Migrations\202302090902378_Initial.designer.cs">
+      <DependentUpon>202302090902378_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\OrderWarehouseItem.cs" />
+    <Compile Include="Models\Warehouse.cs" />
+    <Compile Include="Models\WarehouseDocument.cs" />
+    <Compile Include="Models\WarehouseItem.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\AuthorizationView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\AuthorizationView.Designer.cs">
+      <DependentUpon>AuthorizationView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AuthorizationViewModel.cs" />
+    <Compile Include="Views\WarehouseDocumentViews\OrderWarehouseItemEditView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseDocumentViews\OrderWarehouseItemEditView.Designer.cs">
+      <DependentUpon>OrderWarehouseItemEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\WarehouseDocumentViewModels\OrderWarehouseItemEditViewModel.cs" />
+    <Compile Include="Views\WarehouseDocumentViews\WarehouseDocumentEditView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseDocumentViews\WarehouseDocumentEditView.Designer.cs">
+      <DependentUpon>WarehouseDocumentEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\WarehouseDocumentViewModels\WarehouseDocumentEditViewModel.cs" />
+    <Compile Include="Views\WarehouseDocumentViews\WarehouseDocumentView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseDocumentViews\WarehouseDocumentView.Designer.cs">
+      <DependentUpon>WarehouseDocumentView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\WarehouseDocumentViewModels\WarehouseDocumentViewModel.cs" />
+    <Compile Include="Views\WarehouseItemViews\WarehouseItemEditView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseItemViews\WarehouseItemEditView.Designer.cs">
+      <DependentUpon>WarehouseItemEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\WarehouseItemViewModels\WarehouseItemEditViewModel.cs" />
+    <Compile Include="Views\WarehouseItemViews\WarehouseItemView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseItemViews\WarehouseItemView.Designer.cs">
+      <DependentUpon>WarehouseItemView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\WarehouseItemViewModels\WarehouseItemViewModel.cs" />
+    <Compile Include="ViewModels\Credentials\CredentialSource.cs" />
+    <Compile Include="Models\CredentialUser.cs" />
+    <Compile Include="Views\WarehouseViews\WarehouseEditView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseViews\WarehouseEditView.Designer.cs">
+      <DependentUpon>WarehouseEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\WarehouseViewModel\WarehouseEditViewModel.cs" />
+    <Compile Include="Views\WarehouseViews\WarehouseView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\WarehouseViews\WarehouseView.Designer.cs">
+      <DependentUpon>WarehouseView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\WarehouseViewModel\WarehouseViewModel.cs" />
+    <EmbeddedResource Include="Migrations\202302120558099_Added_more_fields.resx">
+      <DependentUpon>202302120558099_Added_more_fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302121645061_Renove_unneeded.resx">
+      <DependentUpon>202302121645061_Renove_unneeded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AuthorizationView.resx">
+      <DependentUpon>AuthorizationView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302090902378_Initial.resx">
+      <DependentUpon>202302090902378_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\WarehouseDocumentViews\OrderWarehouseItemEditView.resx">
+      <DependentUpon>OrderWarehouseItemEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseDocumentViews\WarehouseDocumentEditView.resx">
+      <DependentUpon>WarehouseDocumentEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseDocumentViews\WarehouseDocumentView.resx">
+      <DependentUpon>WarehouseDocumentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseItemViews\WarehouseItemEditView.resx">
+      <DependentUpon>WarehouseItemEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseItemViews\WarehouseItemView.resx">
+      <DependentUpon>WarehouseItemView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseViews\WarehouseEditView.resx">
+      <DependentUpon>WarehouseEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseViews\WarehouseView.resx">
+      <DependentUpon>WarehouseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Testowe_WinF_Dev.Models.CredentialUser.datasource" />
+    <None Include="Properties\DataSources\Testowe_WinF_Dev.Models.OrderWarehouseItem.datasource" />
+    <None Include="Properties\DataSources\Testowe_WinF_Dev.Models.Warehouse.datasource" />
+    <None Include="Properties\DataSources\Testowe_WinF_Dev.Models.WarehouseDocument.datasource" />
+    <None Include="Properties\DataSources\Testowe_WinF_Dev.Models.WarehouseItem.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
