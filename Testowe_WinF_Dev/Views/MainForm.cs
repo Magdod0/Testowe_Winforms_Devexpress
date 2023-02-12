@@ -29,6 +29,7 @@ namespace Testowe_WinF_Dev
             fluentAPI.BindCommand(bbiWarehouse, x => x.FindWarehouseView);
             fluentAPI.BindCommand(bbiItems, x => x.FindWarehouseItemView);
             fluentAPI.BindCommand(bbiDocs, x => x.FindWarehouseDocumentView);
+            fluentAPI.BindCommand(bbiGitHubAPI, x => x.GitHubAPI);
 
             fluentAPI.SetTrigger(x => x.State, (state) =>
             {

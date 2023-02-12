@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Testowe_WinF_Dev.ViewModels.Credentials;
+using Testowe_WinF_Dev.DataModels.GithubAPI;
+using System.Configuration;
 
 namespace Testowe_WinF_Dev.ViewModels
 {
@@ -72,6 +74,23 @@ namespace Testowe_WinF_Dev.ViewModels
         {
             var document = CreateDocument(WarehouseDocumentView_ID, "WarehouseDocumentView", "Warehouse Document", this);
             document.Show();
+        }
+        public void GitHubAPI()
+        {
+            try
+            {
+                string token = ConfigurationManager.AppSettings["tokenRead"].ToString();
+                var git = new GitHubAPI(token);
+                git.GetGitHubRepositoryAsync("Magdod0", "Testowe_Winforms_Devexpress")
+                    .ContinueWith(t=>
+                    {
+                        MessageService.ShowMessage(t.Result.ToString());
+                    });
+            }
+            catch
+            {
+                MessageService.ShowMessage("Can't reach the Repository!");
+            }
         }
         public void CreateAllDocuments()
         {

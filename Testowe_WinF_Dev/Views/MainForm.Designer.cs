@@ -34,8 +34,10 @@
             this.bbiWarehouse = new DevExpress.XtraBars.BarButtonItem();
             this.bbiItems = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDocs = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiGitHubAPI = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.docButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.mvvmContext1 = new DevExpress.Utils.MVVM.MVVMContext(this.components);
@@ -56,9 +58,10 @@
             this.ribbonControl1.SearchEditItem,
             this.bbiWarehouse,
             this.bbiItems,
-            this.bbiDocs});
+            this.bbiDocs,
+            this.bbiGitHubAPI});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 4;
+            this.ribbonControl1.MaxItemId = 5;
             this.ribbonControl1.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -90,10 +93,18 @@
             this.bbiDocs.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDocs.ImageOptions.LargeImage")));
             this.bbiDocs.Name = "bbiDocs";
             // 
+            // bbiGitHubAPI
+            // 
+            this.bbiGitHubAPI.Id = 4;
+            this.bbiGitHubAPI.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.bbiGitHubAPI.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.bbiGitHubAPI.Name = "bbiGitHubAPI";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup3});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Pages";
             // 
@@ -104,6 +115,12 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDocs);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Navigation";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbiGitHubAPI);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "GitHubAPI";
             // 
             // docButtonItem
             // 
@@ -167,6 +184,8 @@
         private DevExpress.Utils.MVVM.MVVMContext mvvmContext1;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
         private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
+        private DevExpress.XtraBars.BarButtonItem bbiGitHubAPI;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
     }
 }
 

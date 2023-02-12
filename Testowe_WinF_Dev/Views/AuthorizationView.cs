@@ -27,6 +27,7 @@ namespace Testowe_WinF_Dev.Views
             var fluentAPI = mvvmContext1.OfType<CredentialsViewModel>();
             fluentAPI.SetObjectDataSourceBinding(credentialUserBindingSource,
                 x => x.CurrentUser, x => x.Update());
+
             foreach (string item in fluentAPI.ViewModel.GetUsers)
                 textEdit1.Properties.Items.Add(item);
             fluentAPI.ViewModel.Init();

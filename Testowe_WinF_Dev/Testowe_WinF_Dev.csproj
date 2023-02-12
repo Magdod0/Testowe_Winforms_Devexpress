@@ -59,6 +59,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
@@ -72,8 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataModels\Context\MyDbContext.cs" />
+    <Compile Include="DataModels\GithubAPI\GitHubAPI.cs" />
     <Compile Include="DataModels\GithubAPI\GitHubRepository.cs" />
     <Compile Include="DataModels\Repositories\IRepository.cs" />
+    <Compile Include="DataModels\Repositories\OrderWarehouseItemRepository.cs" />
+    <Compile Include="DataModels\Repositories\WarehouseDocumentRepository.cs" />
+    <Compile Include="DataModels\Repositories\WarehouseItemRepository.cs" />
     <Compile Include="DataModels\Repositories\WarehouseRepository.cs" />
     <Compile Include="DataModels\UnitOfWorks\IUnitOfWork.cs" />
     <Compile Include="DataModels\UnitOfWorks\UnitOfWork.cs" />

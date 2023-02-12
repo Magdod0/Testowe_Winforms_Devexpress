@@ -22,7 +22,7 @@ namespace Testowe_WinF_Dev.DataModels.GithubAPI
             // Add the API token to the Authorization header
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", _token);
             // Set User header - without him the answer would be: Forbidden!
-            _client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("Testowe_Backend", "1.0.0"));
+            _client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("Testowe_Winforms_Devexpress", "1.0.0"));
             // Make API request to get information about the specified repository
             var response = await _client.GetAsync($"https://api.github.com/repos/{owner}/{repo}");
 
