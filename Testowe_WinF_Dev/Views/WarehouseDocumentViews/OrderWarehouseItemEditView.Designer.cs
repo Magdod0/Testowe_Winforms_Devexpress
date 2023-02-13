@@ -39,36 +39,36 @@
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.teUnitsLeft = new DevExpress.XtraEditors.TextEdit();
-            this.warehouseItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.unitsLeftBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.textEdit3 = new DevExpress.XtraEditors.DateEdit();
             this.orderWarehouseItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.teUnitsTake = new DevExpress.XtraEditors.SpinEdit();
             this.textEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            this.warehouseItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.unitsLeftBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.teUnitsLeft.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.warehouseItemBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitsLeftBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderWarehouseItemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teUnitsTake.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.warehouseItemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitsLeftBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // mvvmContext1
@@ -89,7 +89,7 @@
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbonControl1.Size = new System.Drawing.Size(371, 150);
+            this.ribbonControl1.Size = new System.Drawing.Size(497, 150);
             // 
             // bbiSave
             // 
@@ -136,7 +136,7 @@
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 150);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(371, 239);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(497, 347);
             this.dataLayoutControl1.TabIndex = 2;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -147,19 +147,19 @@
             this.teUnitsLeft.MenuManager = this.ribbonControl1;
             this.teUnitsLeft.Name = "teUnitsLeft";
             this.teUnitsLeft.Properties.ReadOnly = true;
-            this.teUnitsLeft.Size = new System.Drawing.Size(225, 20);
+            this.teUnitsLeft.Size = new System.Drawing.Size(351, 20);
             this.teUnitsLeft.StyleController = this.dataLayoutControl1;
             this.teUnitsLeft.TabIndex = 5;
             // 
-            // warehouseItemBindingSource
+            // unitsLeftBindingSource1
             // 
-            this.warehouseItemBindingSource.DataSource = typeof(Testowe_WinF_Dev.Models.WarehouseItem);
+            this.unitsLeftBindingSource1.DataSource = typeof(Testowe_WinF_Dev.Models.WarehouseItem);
             // 
             // textEdit3
             // 
             this.textEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderWarehouseItemBindingSource, "OrderDate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textEdit3.EditValue = null;
-            this.textEdit3.Location = new System.Drawing.Point(134, 207);
+            this.textEdit3.Location = new System.Drawing.Point(134, 315);
             this.textEdit3.MenuManager = this.ribbonControl1;
             this.textEdit3.Name = "textEdit3";
             this.textEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -172,7 +172,7 @@
             this.textEdit3.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.textEdit3.Properties.Mask.EditMask = "";
             this.textEdit3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.textEdit3.Size = new System.Drawing.Size(225, 20);
+            this.textEdit3.Size = new System.Drawing.Size(351, 20);
             this.textEdit3.StyleController = this.dataLayoutControl1;
             this.textEdit3.TabIndex = 6;
             // 
@@ -195,7 +195,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.teUnitsTake.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.teUnitsTake.Properties.MaskSettings.Set("mask", "d");
-            this.teUnitsTake.Size = new System.Drawing.Size(225, 20);
+            this.teUnitsTake.Size = new System.Drawing.Size(351, 20);
             this.teUnitsTake.StyleController = this.dataLayoutControl1;
             this.teUnitsTake.TabIndex = 7;
             // 
@@ -212,11 +212,15 @@
             this.textEdit1.Properties.DisplayMember = "Name";
             this.textEdit1.Properties.NullText = "";
             this.textEdit1.Properties.ValueMember = "ID";
-            this.textEdit1.Size = new System.Drawing.Size(225, 20);
+            this.textEdit1.Size = new System.Drawing.Size(351, 20);
             this.textEdit1.StyleController = this.dataLayoutControl1;
             this.textEdit1.TabIndex = 4;
             this.textEdit1.QueryPopUp += new System.ComponentModel.CancelEventHandler(this.textEdit1_QueryPopUp);
             this.textEdit1.EditValueChanged += new System.EventHandler(this.textEdit1_EditValueChanged);
+            // 
+            // warehouseItemBindingSource
+            // 
+            this.warehouseItemBindingSource.DataSource = typeof(Testowe_WinF_Dev.Models.WarehouseItem);
             // 
             // Root
             // 
@@ -229,7 +233,7 @@
             this.layoutControlItem3,
             this.layoutControlItem4});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(371, 239);
+            this.Root.Size = new System.Drawing.Size(497, 347);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -237,7 +241,7 @@
             this.layoutControlItem1.Control = this.textEdit1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(351, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(477, 24);
             this.layoutControlItem1.Text = "Warehouse Item Name";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(110, 13);
             // 
@@ -246,7 +250,7 @@
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 72);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(351, 123);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(477, 231);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem2
@@ -254,16 +258,16 @@
             this.layoutControlItem2.Control = this.teUnitsLeft;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(351, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(477, 24);
             this.layoutControlItem2.Text = "Units in Warehouse";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(110, 13);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.textEdit3;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 195);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 303);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(351, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(477, 24);
             this.layoutControlItem3.Text = "Order Date";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(110, 13);
             // 
@@ -272,13 +276,9 @@
             this.layoutControlItem4.Control = this.teUnitsTake;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(351, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(477, 24);
             this.layoutControlItem4.Text = "Units";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(110, 13);
-            // 
-            // unitsLeftBindingSource1
-            // 
-            this.unitsLeftBindingSource1.DataSource = typeof(Testowe_WinF_Dev.Models.WarehouseItem);
             // 
             // OrderWarehouseItemEditView
             // 
@@ -287,25 +287,25 @@
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.ribbonControl1);
             this.Name = "OrderWarehouseItemEditView";
-            this.Size = new System.Drawing.Size(371, 389);
+            this.Size = new System.Drawing.Size(497, 497);
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.teUnitsLeft.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.warehouseItemBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitsLeftBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderWarehouseItemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teUnitsTake.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.warehouseItemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitsLeftBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
