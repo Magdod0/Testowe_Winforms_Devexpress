@@ -40,7 +40,7 @@ namespace Testowe_WinF_Dev.Views.WarehouseItemViews
 
         private void teUnitsAtBegining_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
-            if (IsAdding)
+            if (IsAdding || double.Parse(this.teUnitsAtBegining.Text).Equals(double.Parse(teUnitsLeft.Text)))
             {
                 teUnitsLeft.Text = e.NewValue.ToString();
             }
