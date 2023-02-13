@@ -33,10 +33,11 @@ namespace Testowe_WinF_Dev.Views.WarehouseDocumentViews
             fluentAPI.BindCommand(bbiClose, x => x.Cancel);
 
             fluentAPI.WithEvent<ChangingEventArgs>(textEdit1, "EditValueChanging")
-                   .SetBinding(x => x.Item.WarehouseItemID, e => e.NewValue);
+                   .SetBinding(x => x.Item.WarehouseItemID, e => viewModel.SetVlaue(e.NewValue));
 
             fluentAPI.SetBinding(warehouseItemBindingSource, wbs => wbs.DataSource, x => x.ItemObjects);
             fluentAPI.SetBinding(orderWarehouseItemBindingSource, wbs => wbs.DataSource, x => x.Item);
+            fluentAPI.SetBinding(unitsLeftBindingSource1, wbs => wbs.DataSource, x => x.ItemWithUnits);
 
             var id = viewModel.GetFirstItemId();
             if(id != -1)

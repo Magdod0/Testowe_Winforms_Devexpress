@@ -50,6 +50,7 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.unitsLeftBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
@@ -67,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitsLeftBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // mvvmContext1
@@ -140,7 +142,7 @@
             // 
             // teUnitsLeft
             // 
-            this.teUnitsLeft.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehouseItemBindingSource, "UnitsLeft", true));
+            this.teUnitsLeft.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.unitsLeftBindingSource1, "UnitsLeft", true));
             this.teUnitsLeft.Location = new System.Drawing.Point(134, 36);
             this.teUnitsLeft.MenuManager = this.ribbonControl1;
             this.teUnitsLeft.Name = "teUnitsLeft";
@@ -209,7 +211,6 @@
             this.textEdit1.Properties.DataSource = this.warehouseItemBindingSource;
             this.textEdit1.Properties.DisplayMember = "Name";
             this.textEdit1.Properties.NullText = "";
-            this.textEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.textEdit1.Properties.ValueMember = "ID";
             this.textEdit1.Size = new System.Drawing.Size(225, 20);
             this.textEdit1.StyleController = this.dataLayoutControl1;
@@ -275,6 +276,10 @@
             this.layoutControlItem4.Text = "Units";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(110, 13);
             // 
+            // unitsLeftBindingSource1
+            // 
+            this.unitsLeftBindingSource1.DataSource = typeof(Testowe_WinF_Dev.Models.WarehouseItem);
+            // 
             // OrderWarehouseItemEditView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,6 +305,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitsLeftBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,5 +332,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.LookUpEdit textEdit1;
+        private System.Windows.Forms.BindingSource unitsLeftBindingSource1;
     }
 }

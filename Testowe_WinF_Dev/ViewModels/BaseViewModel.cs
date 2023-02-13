@@ -35,7 +35,7 @@ namespace Testowe_WinF_Dev.ViewModels
             _foreignRepository = foreignRepo;
         }
 
-        protected void UpdateResult(TEntity item, object ID)
+        protected virtual void UpdateResult(TEntity item, object ID)
         {
             if (item != null)
             {
@@ -44,7 +44,7 @@ namespace Testowe_WinF_Dev.ViewModels
                 _uow.SaveChanges();
             }
         }
-        protected void InsertResult(TEntity item, object ID)
+        protected virtual void InsertResult(TEntity item, object ID)
         {
             if (item != null)
             {
@@ -62,9 +62,12 @@ namespace Testowe_WinF_Dev.ViewModels
         {
             var dbItem = Get(ID);
             var index = Source.IndexOf(dbItem);
-            Source[index] = item;
+            if (index != -1)
+            {
+                Source[index] = item;
 
-            SelectedEntity = item;
+                SelectedEntity = item;
+            }
         }
         public virtual void Init()
         {

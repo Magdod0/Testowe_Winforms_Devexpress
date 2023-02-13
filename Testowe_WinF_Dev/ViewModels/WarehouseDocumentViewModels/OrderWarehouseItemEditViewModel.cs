@@ -11,6 +11,7 @@ namespace Testowe_WinF_Dev.ViewModels.WarehouseDocumentViewModels
     [POCOViewModel]
     public class OrderWarehouseItemEditViewModel:BaseEditionViewModel<OrderWarehouseItem, WarehouseItem>
     {
+        public virtual WarehouseItem ItemWithUnits { get; set; }
         public OrderWarehouseItemEditViewModel(OrderWarehouseItem orderItem, Action<OrderWarehouseItem, object> resultAction, ObservableCollection<WarehouseItem> warehouseItems, bool isAdding)
             :base(orderItem, resultAction, warehouseItems,isAdding) { }
 
@@ -28,5 +29,11 @@ namespace Testowe_WinF_Dev.ViewModels.WarehouseDocumentViewModels
         }
         public long GetFirstItemId() => (ItemObjects.Count > 0) ? ItemObjects.First().ID : -1;
 
+        internal long SetVlaue(object newValue)
+        {
+            var value = (long)newValue;
+            ItemWithUnits = ItemObjects.FirstOrDefault(w => w.ID == value);
+            return value;
+        }
     }
 }

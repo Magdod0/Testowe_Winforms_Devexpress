@@ -7,4 +7,4 @@ Normalny App z MVVM pattern z wieloma łatami.
 Wszystkie one implementują zwykłą funkcjonalność CRUD.
 Dokumenty posiadają również funkcję Issue document, która odejmuje od ogólnej liczby jednostek tabeli WarehouseItem wartość jednostek wybranych w dokumencie.
 
-Aby zmigrować bazę danych, użyj polecenia Update-Database w konsoli Package Manager.
+Aby zmigrować bazę danych, użyj polecenia enable-migration z Update-Database w konsoli Package Manager.

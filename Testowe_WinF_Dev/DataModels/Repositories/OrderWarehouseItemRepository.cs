@@ -47,7 +47,8 @@ namespace Testowe_WinF_Dev.DataModels.Repositories
 
         public void Update(OrderWarehouseItem item)
         {
-            _context.Entry(item).State = EntityState.Modified;
+            if (Get(item.ID) != null)
+                _context.Entry(item).State = EntityState.Modified;
         }
     }
 }

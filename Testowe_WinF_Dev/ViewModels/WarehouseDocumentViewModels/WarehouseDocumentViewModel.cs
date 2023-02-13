@@ -17,7 +17,7 @@ namespace Testowe_WinF_Dev.ViewModels.WarehouseDocumentViewModels
     {
         WarehouseDocumentUnitOfWork _unitOfWork;
         public virtual Warehouse CurrentWarehouse { get; set; }
-        public virtual ObservableCollection<WarehouseDocument> WarehouseDocuments { get; set; }
+        //public virtual ObservableCollection<WarehouseDocument> WarehouseDocuments { get; set; }
         //Filtering
         private bool filterIsArchieved = false;
         private long filterId = -1;
@@ -29,7 +29,7 @@ namespace Testowe_WinF_Dev.ViewModels.WarehouseDocumentViewModels
         public WarehouseDocumentViewModel(Warehouse warehouse) : this()
         {
             CurrentWarehouse = warehouse;
-            WarehouseDocuments = Source;
+            //WarehouseDocuments = Source;
         }
 
 
@@ -108,24 +108,35 @@ namespace Testowe_WinF_Dev.ViewModels.WarehouseDocumentViewModels
 
             return ForeignSource.FirstOrDefault(w => w.ID == filterId);
         }
+
         private void FilterThis()
         {
-            if (filterId != -1)
-            {
-                WarehouseDocuments = Source.Where(e => e.WarehouseID == filterId).ToObservableCollection();
-            }
-            else
-            {
-                WarehouseDocuments = Source;
-            }
+            //if (filterId != -1)
+            //{
+            //    //WarehouseDocuments = Source.Where(e => e.WarehouseID == filterId).ToObservableCollection();
+            //}
+            //else
+            //{
+            //    WarehouseDocuments = Source;
+            //}
 
-            if (filterIsArchieved)
-                WarehouseDocuments = WarehouseDocuments.Where(w => w.DocunmentDate != null).ToObservableCollection();
-            else
-            {
-                WarehouseDocuments = WarehouseDocuments.Where(w => w.DocunmentDate == null).ToObservableCollection();
-            }
-            SelectedEntity = WarehouseDocuments.FirstOrDefault();
+            //if (filterIsArchieved)
+            //    WarehouseDocuments = WarehouseDocuments.Where(w => w.DocunmentDate != null).ToObservableCollection();
+            //else
+            //{
+            //    WarehouseDocuments = WarehouseDocuments.Where(w => w.DocunmentDate == null).ToObservableCollection();
+            //}
+            //SelectedEntity = WarehouseDocuments.FirstOrDefault();
+            Source = GetItems(e =>
+            ((filterId != -1)
+                ? e.WarehouseID == filterId
+                : true) &&
+            ((filterIsArchieved)
+                ? e.DocunmentDate != null
+                : e.DocunmentDate == null)
+            ).ToObservableCollection();
+
+            SelectedEntity = Source.FirstOrDefault();
         }
         private Dictionary<WarehouseItem, int> GetDictionaryOfWarehouseItems(WarehouseDocument thisitem)
         {
@@ -144,6 +155,10 @@ namespace Testowe_WinF_Dev.ViewModels.WarehouseDocumentViewModels
         {
             try
             {
+                if(thisitem == null)
+                {
+                    return;
+                }
                 if (thisitem.DocunmentDate != null)
                 {
                     var dict = GetDictionaryOfWarehouseItems(thisitem);
@@ -159,6 +174,7 @@ namespace Testowe_WinF_Dev.ViewModels.WarehouseDocumentViewModels
                     }
                 }
                 base.Delete(thisitem);
+                //WarehouseDocuments.Remove(thisitem);
             }
             catch(Exception ex)
             {
@@ -193,11 +209,24 @@ namespace Testowe_WinF_Dev.ViewModels.WarehouseDocumentViewModels
             _unitOfWork = WarehouseDocumentUnitOfWork.Create();
             base.SetUnitOfWork(_unitOfWork, _unitOfWork.WarehouseDocumentRepository, _unitOfWork.WarehouseRepository);
             base.Init();
+            FilterThis();
+            //WarehouseDocuments = Source;
         }
 
         internal long GetFirstItemId()
         {
             return (ForeignSource.Count > 0) ? ForeignSource.First().ID : -1;
+        }
+        protected override void InsertResult(WarehouseDocument item, object ID)
+        {
+            base.InsertResult(item, ID);
+            FilterThis();
+        }
+        protected override void UpdateResult(WarehouseDocument item, object ID)
+        {
+            base.UpdateResult(item, ID);
+
+            FilterThis();
         }
     }
 }

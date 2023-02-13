@@ -15,6 +15,7 @@ using Testowe_WinF_Dev.ViewModels.WarehouseDocumentViewModels;
 using DevExpress.Utils.MVVM;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
+using Testowe_WinF_Dev.Models;
 
 namespace Testowe_WinF_Dev.Views
 {
@@ -36,7 +37,7 @@ namespace Testowe_WinF_Dev.Views
             viewModel = fluentAPI.ViewModel;
             viewModel.Init();
             // Source.
-            fluentAPI.SetBinding(gridControl1, gControl => gControl.DataSource, x => x.WarehouseDocuments);
+            fluentAPI.SetBinding(gridControl1, gControl => gControl.DataSource, x => x.Source);
             fluentAPI.SetBinding(warehouseDocumentBindingSource, wdbs => wdbs.DataSource, x => x.CurrentWarehouse);
             fluentAPI.SetBinding(warehouseBindingSource, wbs => wbs.DataSource, x => x.ForeignSource);
             // Commands.
