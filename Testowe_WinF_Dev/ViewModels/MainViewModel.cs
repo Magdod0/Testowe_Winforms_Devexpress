@@ -59,20 +59,6 @@ namespace Testowe_WinF_Dev.ViewModels
             }
             return document;
         }
-        public Task CreateDocumentAsync(object id, string docType, string title, object parentViewModel)
-        {
-            return new Task(() =>
-            {
-                var document = DocumentManagerService.FindDocumentById(id);
-                if (document == null)
-                {
-                    document = DocumentManagerService.CreateDocument(
-                    docType, parameter: null, parentViewModel: parentViewModel);
-                    document.Id = id;
-                    document.Title = title;
-                }
-            });
-        }
 
 
         public void FindWarehouseView()
@@ -108,20 +94,17 @@ namespace Testowe_WinF_Dev.ViewModels
                 MessageService.ShowMessage("Can't reach the Repository!" + aex.Message);
             }
         }
-        public async void CreateAllDocuments()
+        public void CreateAllDocuments()
         {
-            var warehouseTask = CreateDocumentAsync(WarehouseView_ID, "WarehouseView", "Warehouse", this);
-            var itemTask = CreateDocumentAsync(WarehouseItemView_ID, "WarehouseItemView", "Warehouse Item", this);
-            var documentTask = CreateDocumentAsync(WarehouseDocumentView_ID, "WarehouseDocumentView", "Warehouse Document", this);
-            var listTasks = new List<Task>() { warehouseTask, itemTask, documentTask };
+            CreateDocument(WarehouseView_ID, "WarehouseView", "Warehouse", this);
+            CreateDocument(WarehouseItemView_ID, "WarehouseItemView", "Warehouse Item", this);
+            CreateDocument(WarehouseDocumentView_ID, "WarehouseDocumentView", "Warehouse Document", this);
 
-            CreateDocument(CredentialsView_ID, "AuthorizationView", "Authorization", this);
-            await Task.WhenAll(listTasks);
         }
         public void OnLogin()
         {
-            Task.Run(() => CreateAllDocuments())
-                .ContinueWith(t=>Login()).Wait();
+            CreateAllDocuments();
+            Login();
         }
         public void Login()
         {
