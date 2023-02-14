@@ -25,6 +25,8 @@ namespace Testowe_WinF_Dev.ViewModels
         static readonly object WarehouseDocumentView_ID = new object();
         // ViewModels used.
         private CredentialsViewModel _credentialsViewModel;
+        //
+
 
         protected IDialogService DialogService
         {
@@ -57,6 +59,20 @@ namespace Testowe_WinF_Dev.ViewModels
             }
             return document;
         }
+        public Task CreateDocumentAsync(object id, string docType, string title, object parentViewModel)
+        {
+            return new Task(() =>
+            {
+                var document = DocumentManagerService.FindDocumentById(id);
+                if (document == null)
+                {
+                    document = DocumentManagerService.CreateDocument(
+                    docType, parameter: null, parentViewModel: parentViewModel);
+                    document.Id = id;
+                    document.Title = title;
+                }
+            });
+        }
 
 
         public void FindWarehouseView()
@@ -87,22 +103,25 @@ namespace Testowe_WinF_Dev.ViewModels
                         MessageService.ShowMessage(t.Result.ToString());
                     });
             }
-            catch
+            catch(AggregateException aex)
             {
-                MessageService.ShowMessage("Can't reach the Repository!");
+                MessageService.ShowMessage("Can't reach the Repository!" + aex.Message);
             }
         }
-        public void CreateAllDocuments()
+        public async void CreateAllDocuments()
         {
+            var warehouseTask = CreateDocumentAsync(WarehouseView_ID, "WarehouseView", "Warehouse", this);
+            var itemTask = CreateDocumentAsync(WarehouseItemView_ID, "WarehouseItemView", "Warehouse Item", this);
+            var documentTask = CreateDocumentAsync(WarehouseDocumentView_ID, "WarehouseDocumentView", "Warehouse Document", this);
+            var listTasks = new List<Task>() { warehouseTask, itemTask, documentTask };
+
             CreateDocument(CredentialsView_ID, "AuthorizationView", "Authorization", this);
-            CreateDocument(WarehouseView_ID, "WarehouseView", "Warehouse", this);
-            CreateDocument(WarehouseItemView_ID, "WarehouseItemView", "Warehouse Item", this);
-            CreateDocument(WarehouseDocumentView_ID, "WarehouseDocumentView", "Warehouse Document", this);
+            await Task.WhenAll(listTasks);
         }
         public void OnLogin()
         {
-            CreateAllDocuments();
-            Login();
+            Task.Run(() => CreateAllDocuments())
+                .ContinueWith(t=>Login()).Wait();
         }
         public void Login()
         {
