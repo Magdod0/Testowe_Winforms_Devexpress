@@ -13,15 +13,23 @@ namespace Testowe_WinF_Dev.ViewModels.WarehouseDocumentViewModels
     {
         public virtual WarehouseItem ItemWithUnits { get; set; }
         public OrderWarehouseItemEditViewModel(OrderWarehouseItem orderItem, Action<OrderWarehouseItem, object> resultAction, ObservableCollection<WarehouseItem> warehouseItems, bool isAdding)
-            :base(orderItem, resultAction, warehouseItems,isAdding) { }
+            :base(orderItem, resultAction, warehouseItems,isAdding) {
+            ItemWithUnits = new WarehouseItem();
+
+        }
 
         internal static object Create(OrderWarehouseItem orderItem, Action<OrderWarehouseItem, object> resultAction, ObservableCollection<WarehouseItem> warehouseItems, bool isAdding) =>
            ViewModelSource.Create(() => new OrderWarehouseItemEditViewModel(orderItem, resultAction, warehouseItems, isAdding));
 
         public void SaveThis()
         {
-
-            Item.WarehouseItem = ItemObjects.First(w => w.ID == Item.WarehouseItemID);
+            var subItem = ItemObjects.FirstOrDefault(w => w.ID == Item.WarehouseItemID);
+            if(subItem == null)
+            {
+                MessageService.ShowMessage("Nothing to add!");
+                return;
+            }
+            Item.WarehouseItem = subItem;
             if (Item.Units <= Item.WarehouseItem.UnitsLeft)
                 base.Save(Item.ID);
             else
@@ -32,7 +40,7 @@ namespace Testowe_WinF_Dev.ViewModels.WarehouseDocumentViewModels
         internal long SetVlaue(object newValue)
         {
             var value = (long)newValue;
-            ItemWithUnits = ItemObjects.FirstOrDefault(w => w.ID == value);
+            ItemWithUnits = ItemObjects.FirstOrDefault(w => w.ID == value) ?? new WarehouseItem();
             return value;
         }
     }

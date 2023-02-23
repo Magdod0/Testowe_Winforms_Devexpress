@@ -142,7 +142,7 @@
             // 
             // teUnitsLeft
             // 
-            this.teUnitsLeft.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.unitsLeftBindingSource1, "UnitsLeft", true));
+            this.teUnitsLeft.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.unitsLeftBindingSource1, "UnitsLeft", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.teUnitsLeft.Location = new System.Drawing.Point(134, 36);
             this.teUnitsLeft.MenuManager = this.ribbonControl1;
             this.teUnitsLeft.Name = "teUnitsLeft";
